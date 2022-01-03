@@ -3,10 +3,27 @@ import java.util.Arrays;
 public class Adder {
     public static void main(String[] args) {
         boolean bitA = true;
-        boolean bitB = true;
+        boolean bitB = false;
+        boolean carry = true;
 
-        System.out.println(Arrays.toString(halfAdder(bitA, bitB)));
+        System.out.println(Arrays.toString(fullAdder(bitA, bitB, carry)));
 
+    }
+
+    private static boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
+        boolean[] answer = new boolean[2];
+
+        if (bitA & bitB == true) {
+            answer[0] = false;
+            answer[1] = true;
+        }
+
+        if (carry == true) {
+            answer[0] = true;
+        }
+
+
+        return answer;
     }
 
     private static boolean[] halfAdder(boolean bitA, boolean bitB) {
