@@ -1,6 +1,6 @@
 public class DigitalLogicFunction {
 
-    public static boolean myXor(boolean bitA, boolean bitB) {
+    public boolean myXor(boolean bitA, boolean bitB) {
 
         if (bitA == bitB) {
             return false;

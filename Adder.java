@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Adder {
     public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class Adder {
         boolean bitB = false;
         boolean carry = carry(true, true);
 
-        System.out.println(Arrays.toString(fullAdder(bitA, bitB, carry)));
+//        System.out.println(Arrays.toString(fullAdder(bitA, bitB, carry)));
 
     }
 
@@ -36,19 +37,13 @@ public class Adder {
 
     // AND 의 결과와 같다
     private static boolean carry(boolean bitA, boolean bitB) {
-
-        if (bitA & bitB == true) {
-            return true;
-        }
-        return false;
+        DigitalLogicFunction dlf = new DigitalLogicFunction();
+        return dlf.myAnd(bitA, bitB);
     }
 
     // XOR 의 결과와 같다
     private static boolean sum(boolean bitA, boolean bitB) {
-
-        if (bitA == bitB) {
-            return false;
-        }
-        return true;
+        DigitalLogicFunction dlf = new DigitalLogicFunction();
+        return dlf.myXor(bitA, bitB);
     }
 }
