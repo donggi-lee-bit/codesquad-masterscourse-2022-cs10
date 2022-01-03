@@ -3,7 +3,7 @@ public class DigitalLogicFunction {
 
         boolean bitA = true;
         boolean bitB = true;
-        System.out.println(myAnd(bitA, bitB));
+        System.out.println(myAnd(bitA, bitB)); 
     }
 
     public static boolean myAnd(boolean a, boolean b) {
