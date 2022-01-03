@@ -2,29 +2,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Adder {
-    public static void main(String[] args) {
-        boolean bitA = true;
-        boolean bitB = false;
-        boolean carry = carry(true, true);
 
-//        System.out.println(Arrays.toString(fullAdder(bitA, bitB, carry)));
-
-    }
-
-    private static boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
-        boolean[] answer = new boolean[2];
-
-        if (bitA & bitB == true) {
-            answer[0] = false;
-            answer[1] = true;
-        }
-
-        if (carry == true) {
-            answer[0] = true;
-        }
-
-
-        return answer;
+    // 1, 1, 1
+    public boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
+        boolean[] halfAdderResult = halfAdder(bitA, bitB);
+        // c1, s1
+        return new boolean[]{halfAdderResult[0], sum(halfAdderResult[1], carry)};
     }
 
     private boolean[] halfAdder(boolean bitA, boolean bitB) {
