@@ -27,22 +27,18 @@ public class Adder {
         return answer;
     }
 
-    private static boolean[] halfAdder(boolean bitA, boolean bitB) {
-        boolean[] answer = new boolean[2];
-
-        answer[0] = sum(bitA, bitB);
-        answer[1] = carry(bitA, bitB);
-        return answer;
+    private boolean[] halfAdder(boolean bitA, boolean bitB) {
+        return new boolean[]{carry(bitA, bitB), sum(bitA, bitB)};
     }
 
     // AND 의 결과와 같다
-    private static boolean carry(boolean bitA, boolean bitB) {
+    private boolean carry(boolean bitA, boolean bitB) {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
         return dlf.myAnd(bitA, bitB);
     }
 
     // XOR 의 결과와 같다
-    private static boolean sum(boolean bitA, boolean bitB) {
+     private boolean sum(boolean bitA, boolean bitB) {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
         return dlf.myXor(bitA, bitB);
     }
