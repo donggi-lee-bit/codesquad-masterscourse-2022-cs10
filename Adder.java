@@ -3,8 +3,17 @@ public class Adder {
         boolean bitA = true;
         boolean bitB = true;
 
-        System.out.println(mySum(bitA, bitB));
+        myCarry(bitA, bitB);
 
+    }
+
+    // AND 의 결과와 같다
+    private static boolean myCarry(boolean bitA, boolean bitB) {
+
+        if (bitA & bitB == true) {
+            return true;
+        }
+        return false;
     }
 
     // XOR 의 결과와 같다
