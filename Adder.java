@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class Adder {
 
     // 1, 1, 1
@@ -14,15 +11,13 @@ public class Adder {
         return new boolean[]{carry(bitA, bitB), sum(bitA, bitB)};
     }
 
-    // AND 의 결과와 같다
     private boolean carry(boolean bitA, boolean bitB) {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
-        return dlf.myAnd(bitA, bitB);
+        return dlf.and(bitA, bitB);
     }
-
-    // XOR 의 결과와 같다
+    
      private boolean sum(boolean bitA, boolean bitB) {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
-        return dlf.myXor(bitA, bitB);
+        return dlf.xor(bitA, bitB);
     }
 }

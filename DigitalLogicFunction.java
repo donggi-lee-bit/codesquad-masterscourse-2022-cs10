@@ -1,6 +1,6 @@
 public class DigitalLogicFunction {
 
-    public boolean myXor(boolean bitA, boolean bitB) {
+    public boolean xor(boolean bitA, boolean bitB) {
 
         if (bitA == bitB) {
             return false;
@@ -8,7 +8,7 @@ public class DigitalLogicFunction {
         return true;
     }
 
-    public boolean myNand(boolean bitA, boolean bitB) {
+    public boolean nand(boolean bitA, boolean bitB) {
 
         if (bitA & bitB == true) {
             return false;
@@ -16,7 +16,7 @@ public class DigitalLogicFunction {
         return true;
     }
 
-    public boolean myAnd(boolean bitA, boolean bitB) {
+    public boolean and(boolean bitA, boolean bitB) {
 
         if (bitA & bitB == true) {
             return true;
@@ -24,7 +24,7 @@ public class DigitalLogicFunction {
         return false;
     }
 
-    public boolean myOr(boolean bitA, boolean bitB) {
+    public boolean or(boolean bitA, boolean bitB) {
 
         if (bitA | bitB == true) {
             return true;
