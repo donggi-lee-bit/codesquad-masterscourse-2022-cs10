@@ -2,7 +2,31 @@ public class Adder {
 
     DigitalLogicFunction dlf = new DigitalLogicFunction();
 
-    // 1, 1, 1
+    final static int CARRY = 0;
+    final static int SUM = 1;
+
+    /*
+    byteA  = [ 1, 1, 0, 1, 1, 0, 1, 0 ]
+    byteB  = [ 1, 0, 1, 1, 0, 0, 1, 1 ]
+       결과 = [ 0, 0, 0, 1, 0, 1, 0, 0, 1 ]
+     */
+
+    public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
+        boolean[] answer = new boolean[9];
+        boolean carry = false;
+        int len = answer.length - 1;
+        boolean[] res = new boolean[len];
+
+        for (int i = 0; i < len; i++) {
+            res = fullAdder(byteA[i], byteB[i], carry);
+            carry = res[CARRY];
+            answer[i] = res[SUM];
+        }
+        answer[8] = res[CARRY];
+
+        return answer;
+    }
+
     public boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
         boolean[] firstHalfAdder = halfAdder(bitA, bitB);
         boolean sum = firstHalfAdder[1];
