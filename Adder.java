@@ -15,7 +15,7 @@ public class Adder {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
         return dlf.and(bitA, bitB);
     }
-    
+
      private boolean sum(boolean bitA, boolean bitB) {
         DigitalLogicFunction dlf = new DigitalLogicFunction();
         return dlf.xor(bitA, bitB);

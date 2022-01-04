@@ -2,33 +2,21 @@ public class DigitalLogicFunction {
 
     public boolean xor(boolean bitA, boolean bitB) {
 
-        if (bitA == bitB) {
-            return false;
-        }
-        return true;
+        return bitA | bitB && !(bitA & bitB);
     }
 
     public boolean nand(boolean bitA, boolean bitB) {
 
-        if (bitA & bitB == true) {
-            return false;
-        }
-        return true;
+        return !(bitA & bitB);
     }
 
     public boolean and(boolean bitA, boolean bitB) {
 
-        if (bitA & bitB == true) {
-            return true;
-        }
-        return false;
+        return bitA & bitB;
     }
 
     public boolean or(boolean bitA, boolean bitB) {
 
-        if (bitA | bitB == true) {
-            return true;
-        }
-        return false;
+        return bitA | bitB;
     }
 }
