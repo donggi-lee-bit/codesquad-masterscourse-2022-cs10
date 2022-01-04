@@ -1,10 +1,16 @@
 public class Adder {
 
+    DigitalLogicFunction dlf = new DigitalLogicFunction();
+
     // 1, 1, 1
     public boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
-        boolean[] halfAdderResult = halfAdder(bitA, bitB);
-        // c1, s1
-        return new boolean[]{halfAdderResult[0], sum(halfAdderResult[1], carry)};
+        boolean[] firstHalfAdder = halfAdder(bitA, bitB);
+        boolean sum = firstHalfAdder[1];
+
+        boolean[] secondHalfAdder = halfAdder(carry, sum);
+        boolean carryOut = dlf.or(firstHalfAdder[0], secondHalfAdder[0]);
+        boolean sumOut = secondHalfAdder[1];
+        return new boolean[]{carryOut, sumOut};
     }
 
     private boolean[] halfAdder(boolean bitA, boolean bitB) {
