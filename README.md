@@ -3,14 +3,14 @@
   - [x] OR
   - [x] NAND
   - [x] XOR
-- [ ] 반쪽덧셈과 전체덧셈
+- [x] 반쪽덧셈과 전체덧셈
   - [x] sum
   - [x] carry
   - [x] halfadder
-  - [ ] fulladder
-- [ ] 1바이트 덧셈기
+  - [x] fulladder
+- [x] 1바이트 덧셈기
 
-# 디지털 논리 게이트 함수 구현
+# 논리 게이트 함수 구현
 
 ```java
 public boolean myAnd(boolean bitA, boolean bitB) {
@@ -74,7 +74,7 @@ XOR 논리 함수는 값이 서로 다를 때 참을 반환한다. 같은 때는
 
 <br>
 
-# 반쪽덧셈과 전체덧셈
+# 반가산기 전가산기
 
 ```java
 private boolean sum(boolean bitA, boolean bitB) {
@@ -116,12 +116,45 @@ private boolean[] halfAdder(boolean bitA, boolean bitB) {
 
 ```java
 public boolean[] fullAdder(boolean bitA, boolean bitB, boolean carry) {
-        boolean[] halfAdderResult = halfAdder(bitA, bitB);
-        
-        return new boolean[]{halfAdderResult[0], sum(halfAdderResult[1], carry)};
+        boolean[] firstHalfAdder = halfAdder(bitA, bitB);
+        boolean sum = firstHalfAdder[1];
+
+        boolean[] secondHalfAdder = halfAdder(carry, sum);
+        boolean carryOut = dlf.or(firstHalfAdder[0], secondHalfAdder[0]);
+        boolean sumOut = secondHalfAdder[1];
+        return new boolean[]{carryOut, sumOut};
+        }
+```
+
+<p>
+동료들과 코드 리뷰를 가졌을 때 얻은 힌트를 토대로 구현하였습니다. 설계도를 참고하여 반가산기에 매개변수를 넣어주었더니 쉽게 해결 할 수 있었습니다. 다른 사람이 사용할 수 있도록 가독성 있는 코드를 작성하려고 신경 쓰게 됐습니다.
+</p>
+
+<br>
+
+# 바이트 덧셈기
+
+```java
+final static int CARRY = 0;
+    final static int SUM = 1;
+
+    public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
+        boolean[] answer = new boolean[9];
+        boolean carry = false;
+        int len = answer.length - 1;
+        boolean[] res = new boolean[len];
+
+        for (int i = 0; i < len; i++) {
+            res = fullAdder(byteA[i], byteB[i], carry);
+            carry = res[CARRY];
+            answer[i] = res[SUM];
+        }
+        answer[8] = res[CARRY];
+
+        return answer;
     }
 ```
 
 <p>
-코드를 짰는데 값이 제대로 나오지 않아 구현이 잘못된 것 같습니다. 단순히 노트에 bitA, bitB, carry 값을 적고 계산하면 쉽게 답이 나오는 것 같은데 이걸 코드로 표현하려니 갑자기 머리에 과부하가 오는 듯 합니다. 내일 동료들 코드 리뷰때 참고하여 구현할 수 있도록 해보겠습니다.
+정해진 배열 사이즈가 있다는 가정하에 덧셈기를 구현했습니다. 포문을 돌면서 전가산기 메서드에서 반환 받은 SUM 값을 answer 배열에 넣어주었습니다. 포문이 끝난 후 마지막 CARRY 값을 answer 배열에 넣어주어 반환하였습니다.
 </p>

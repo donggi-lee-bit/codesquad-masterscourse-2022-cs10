@@ -5,12 +5,6 @@ public class Adder {
     final static int CARRY = 0;
     final static int SUM = 1;
 
-    /*
-    byteA  = [ 1, 1, 0, 1, 1, 0, 1, 0 ]
-    byteB  = [ 1, 0, 1, 1, 0, 0, 1, 1 ]
-       결과 = [ 0, 0, 0, 1, 0, 1, 0, 0, 1 ]
-     */
-
     public boolean[] byteAdder(boolean[] byteA, boolean[] byteB) {
         boolean[] answer = new boolean[9];
         boolean carry = false;
